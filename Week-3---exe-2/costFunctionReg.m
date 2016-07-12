@@ -21,11 +21,21 @@ temp = sigmoid(X * theta);
 J = (sum(-y .* log(temp) - (1 - y) .* log(1 - temp)) / m) + (sum(theta(2:end).^2) *(lambda / (2*m)));
 
 
-grad(1) = sum((temp - y).*X(:,1)) / m;
 
-for i = 2:size(theta, 1)
-  grad(i) = (sum((temp - y).*X(:,i)) + (lambda * theta(i))) / m;
-end  
+
+grad = (X' * (temp - y)) / m;
+
+temp1 = theta;
+temp1(1) = 0;
+
+grad = grad + (lambda / m) * temp1; 
+
+
+%grad(1) = sum((temp - y).*X(:,1)) / m;
+
+%for i = 2:size(theta, 1)
+%  grad(i) = (sum((temp - y).*X(:,i)) + (lambda * theta(i))) / m;
+%end  
 
 
 % =============================================================
