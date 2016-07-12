@@ -5,10 +5,10 @@ My solutions to programming assignments of MOOC ---> Machine Learning by AndrewN
 
 
 ##For submission error:- "urlread: peer certificate..." issue, and also some other types of "urlread" errors
-
-Replace line no. 66 in file ===>> (lib/submitWithConfiguration.m)
+<br>
+Replace line no. 66 in file ===>> (lib/submitWithConfiguration.m)<br>
 responseBody = urlread(submissionUrl, 'post', params);
-
-by this:
+<br>
+by this:<br>
 [code, responseBody] = system(sprintf('echo jsonBody=%s | curl -k -X POST -d @- %s', body, submissionUrl));
 
