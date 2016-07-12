@@ -22,9 +22,10 @@ grad = zeros(size(theta));
 temp = sigmoid(X * theta);
 J = sum(-y .* log(temp) - (1 - y) .* log(1 - temp)) / m;
 
-for i = 1:size(theta, 1)
-  grad(i) = sum((temp - y).*X(:,i)) / m;
-end  
+grad = (X' * (temp - y)) / m;
+%for i = 1:size(theta, 1)
+%  grad(i) = sum((temp - y).*X(:,i)) / m;
+%end  
 
 % =============================================================
 
